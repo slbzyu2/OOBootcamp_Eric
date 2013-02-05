@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using CabinetSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CabinetSystemTest
@@ -10,9 +11,9 @@ namespace CabinetSystemTest
     /// Summary description for UnitTest1
     /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class CabinetTest
     {
-        public UnitTest1()
+        public CabinetTest()
         {
             //
             // TODO: Add constructor logic here
@@ -62,9 +63,9 @@ namespace CabinetSystemTest
         [TestMethod]
         public void TestMethod1()
         {
-            //
-            // TODO: Add test logic	here
-            //
+            var cabinet = new Cabinet();
+            var hasEmptyBox = cabinet.HasEmptyBox();
+            Assert.IsTrue(hasEmptyBox);
         }
     }
 }
