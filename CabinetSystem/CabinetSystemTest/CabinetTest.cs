@@ -61,7 +61,7 @@ namespace CabinetSystemTest
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void test_should_has_empty_box()
         {
             var cabinet = new Cabinet();
             var hasEmptyBox = cabinet.HasEmptyBox();
