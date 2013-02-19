@@ -1,3 +1,4 @@
+using System.Collections;
 using CabinetSystemTest;
 
 namespace CabinetSystem
@@ -5,6 +6,11 @@ namespace CabinetSystem
     public class Cabinet
     {
         private Bag _bag;
+        private Hashtable htBags;
+        public Cabinet()
+        {
+            htBags = new Hashtable();
+        }
         public bool HasEmptyBox()
         {
             return true;
@@ -13,12 +19,15 @@ namespace CabinetSystem
         public Ticket Store(Bag bag)
         {
             _bag = bag;
-            return new Ticket();
+            var ticket=new Ticket();
+            htBags.Add(ticket, bag);
+
+            return ticket;
         }
 
         public Bag PickBag(Ticket ticket)
         {
-            return _bag;
+            return htBags[ticket] as Bag;
         }
     }
 }
