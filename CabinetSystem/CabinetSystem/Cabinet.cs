@@ -1,3 +1,5 @@
+using CabinetSystemTest;
+
 namespace CabinetSystem
 {
     public class Cabinet
@@ -5,6 +7,11 @@ namespace CabinetSystem
         public bool HasEmptyBox()
         {
             return true;
+        }
+
+        public Ticket Store(Bag bag)
+        {
+            return new Ticket();
         }
     }
 }

@@ -67,5 +67,13 @@ namespace CabinetSystemTest
             var hasEmptyBox = cabinet.HasEmptyBox();
             Assert.IsTrue(hasEmptyBox);
         }
+
+        [TestMethod]
+        public void test_Has_empty_box_and_store_bag_and_get_a_ticket()
+        {
+            var cabinet = new Cabinet();
+            Ticket ticket = cabinet.Store(new Bag());
+            Assert.IsNotNull(ticket);
+        }
     }
 }
