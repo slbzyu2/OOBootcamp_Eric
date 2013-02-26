@@ -42,14 +42,12 @@ namespace CabinetSystem
             if (ticket == null)
                 throw new NonTicketException("Invalid Ticket");
 
-            if (_dictionary.ContainsKey(ticket))
-            {
-                var bag = _dictionary[ticket];
-                _dictionary.Remove(ticket);
-                return bag;
-            }
+            if (!_dictionary.ContainsKey(ticket))
+                return null;
 
-            return null;
+            var bag = _dictionary[ticket];
+            _dictionary.Remove(ticket);
+            return bag;
         }
     }
 }
