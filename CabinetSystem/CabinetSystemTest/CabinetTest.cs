@@ -130,11 +130,11 @@ namespace CabinetSystemTest
         [ExpectedException(typeof(NoAvailableBoxException))]
         public void test_should_throw_exception_when_cabinet_is_full()
         {
-            var cabinet = new Cabinet(2);
+            const int capacity = 2;
+            var cabinet = new Cabinet(capacity);
             cabinet.Store(new Bag());
             cabinet.Store(new Bag());
             cabinet.Store(new Bag());
         }
-
     }
 }
