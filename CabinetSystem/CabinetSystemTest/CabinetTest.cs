@@ -96,5 +96,15 @@ namespace CabinetSystemTest
             Assert.AreEqual(bag1, cabinet.PickBag(ticket1));
             Assert.AreEqual(bag2, cabinet.PickBag(ticket2));
         }
+
+        [TestMethod]
+        public void test_pick_bag_by_obselete_ticket()
+        {
+            var cabinet = new Cabinet();
+            Ticket ticket = cabinet.Store(new Bag());
+            cabinet.PickBag(ticket);
+
+            Assert.IsNull(cabinet.PickBag(ticket));
+        }
     }
 }

@@ -1,16 +1,17 @@
 using System.Collections;
+using System.Collections.Generic;
 using CabinetSystemTest;
 
 namespace CabinetSystem
 {
     public class Cabinet
     {
-        private Bag _bag;
-        private Hashtable htBags;
+        private readonly IDictionary<Ticket, Bag> _dictionary;
         public Cabinet()
         {
-            htBags = new Hashtable();
+            _dictionary = new Dictionary<Ticket, Bag>();
         }
+
         public bool HasEmptyBox()
         {
             return true;
@@ -18,16 +19,22 @@ namespace CabinetSystem
 
         public Ticket Store(Bag bag)
         {
-            _bag = bag;
             var ticket=new Ticket();
-            htBags.Add(ticket, bag);
+            _dictionary.Add(ticket, bag);
 
             return ticket;
         }
 
         public Bag PickBag(Ticket ticket)
         {
-            return htBags[ticket] as Bag;
+            if (_dictionary.ContainsKey(ticket))
+            {
+                var bag = _dictionary[ticket];
+                _dictionary.Remove(ticket);
+                return bag;
+            }
+
+            return null;
         }
     }
 }
