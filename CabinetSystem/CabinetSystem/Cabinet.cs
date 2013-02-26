@@ -6,20 +6,32 @@ namespace CabinetSystem
 {
     public class Cabinet
     {
+        private const int DEFAULT_CAPACITY = 5;
+        private readonly int _capacity;
         private readonly IDictionary<Ticket, Bag> _dictionary;
         public Cabinet()
         {
-            _dictionary = new Dictionary<Ticket, Bag>();
+            _dictionary = new Dictionary<Ticket, Bag>(DEFAULT_CAPACITY);
+            _capacity = DEFAULT_CAPACITY;
+        }
+
+        public Cabinet(int capacity)
+        {
+            _capacity = capacity;
+            _dictionary = new Dictionary<Ticket, Bag>(capacity);
         }
 
         public bool HasEmptyBox()
         {
-            return true;
+            return _dictionary.Count < _capacity;
         }
 
         public Ticket Store(Bag bag)
         {
-            var ticket=new Ticket();
+            if (_dictionary.Count >= _capacity)
+                throw new NoAvailableBoxException();
+
+            var ticket = new Ticket();
             _dictionary.Add(ticket, bag);
 
             return ticket;

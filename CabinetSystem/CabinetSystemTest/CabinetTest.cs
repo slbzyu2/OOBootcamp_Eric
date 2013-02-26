@@ -119,13 +119,22 @@ namespace CabinetSystemTest
 
         [TestMethod]
         [ExpectedException(typeof(NonTicketException))]
-        public void test_should_return_null_when_picking_bag_by_non_ticket()
+        public void test_should_throw_exception_when_picking_bag_by_non_ticket()
         {
             var cabinet = new Cabinet();
             cabinet.Store(new Bag());
             cabinet.PickBag(new object() as Ticket);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(NoAvailableBoxException))]
+        public void test_should_throw_exception_when_cabinet_is_full()
+        {
+            var cabinet = new Cabinet(2);
+            cabinet.Store(new Bag());
+            cabinet.Store(new Bag());
+            cabinet.Store(new Bag());
+        }
 
     }
 }
