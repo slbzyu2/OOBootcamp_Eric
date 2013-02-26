@@ -27,6 +27,9 @@ namespace CabinetSystem
 
         public Bag PickBag(Ticket ticket)
         {
+            if (ticket == null)
+                throw new NonTicketException("Invalid Ticket");
+
             if (_dictionary.ContainsKey(ticket))
             {
                 var bag = _dictionary[ticket];

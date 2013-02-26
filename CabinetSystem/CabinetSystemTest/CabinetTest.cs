@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using CabinetSystem;
@@ -106,5 +105,27 @@ namespace CabinetSystemTest
 
             Assert.IsNull(cabinet.PickBag(ticket));
         }
+
+        [TestMethod]
+        public void test_should_return_null_when_picking_bag_by_invalid_ticket()
+        {
+            var cabinet = new Cabinet();
+            cabinet.Store(new Bag());
+            var pickBag = cabinet.PickBag(new Ticket());
+
+            Assert.IsNull(pickBag);
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(NonTicketException))]
+        public void test_should_return_null_when_picking_bag_by_non_ticket()
+        {
+            var cabinet = new Cabinet();
+            cabinet.Store(new Bag());
+            cabinet.PickBag(new object() as Ticket);
+        }
+
+
     }
 }

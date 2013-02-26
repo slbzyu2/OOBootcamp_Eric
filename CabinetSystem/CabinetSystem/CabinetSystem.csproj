@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Bag.cs" />
     <Compile Include="Cabinet.cs" />
+    <Compile Include="NonTicketException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
   </ItemGroup>
