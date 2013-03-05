@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CabinetSystem;
+using CabinetSystemTest;
 
 namespace CabinetSystem
 {
@@ -21,6 +22,13 @@ namespace CabinetSystem
         public bool HasEmptyBox()
         {
             return _lsCabinet.Any(cabin => cabin.HasEmptyBox());
+        }
+
+        public Ticket StoreBag(Bag bag)
+        {
+            return (from cabinet in _lsCabinet 
+                    where cabinet.HasEmptyBox() 
+                    select cabinet.Store(bag)).FirstOrDefault();
         }
     }
 }

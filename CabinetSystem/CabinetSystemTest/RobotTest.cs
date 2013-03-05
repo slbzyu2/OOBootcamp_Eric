@@ -70,5 +70,18 @@ namespace CabinetSystemTest
             Assert.IsTrue(rb.HasEmptyBox());
         }
 
+        [TestMethod]
+        public void test_should_robot_save_bag_when_has_empty_box()
+        {
+            var rb = new Robot();
+            rb.Add(new Cabinet());
+            rb.Add(new Cabinet());
+
+            Assert.IsTrue(rb.HasEmptyBox());
+
+            var t1 = rb.StoreBag(new Bag());
+            Assert.IsNotNull(t1);
+        }
+
     }
 }
