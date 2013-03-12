@@ -26,9 +26,16 @@ namespace CabinetSystem
 
         public Ticket StoreBag(Bag bag)
         {
-            return (from cabinet in _lsCabinet 
-                    where cabinet.HasEmptyBox() 
-                    select cabinet.Store(bag)).FirstOrDefault();
+            foreach (var cabinet in _lsCabinet)
+            {
+                if (!cabinet.HasEmptyBox()) 
+                    continue;
+
+                var ticket = cabinet.Store(bag);
+                return ticket;
+            }
+
+            throw new NoAvailableBoxException();
         }
     }
 }

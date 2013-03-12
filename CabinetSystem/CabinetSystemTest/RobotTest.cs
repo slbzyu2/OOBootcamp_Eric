@@ -109,5 +109,15 @@ namespace CabinetSystemTest
             Assert.IsFalse(cabinet1.HasEmptyBox());
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(NoAvailableBoxException))]
+        public void test_should_not_robot_save_bag_when_all_cabinet_full()
+        {
+            var rb = new Robot();
+            rb.Add(new Cabinet(1));
+            rb.StoreBag(new Bag());
+            rb.StoreBag(new Bag());
+        }
+
     }
 }
