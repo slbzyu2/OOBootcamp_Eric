@@ -95,6 +95,19 @@ namespace CabinetSystemTest
             Assert.IsFalse(cabinet1.HasEmptyBox());
         }
 
+        [TestMethod]
+        public void test_should_robot_save_bag_sequentially_when_nonrobot_save_bag_first()
+        {
+            var rb = new Robot();
+            var cabinet1 = new Cabinet(2);
+            rb.Add(cabinet1);
+            var cabinet2 = new Cabinet(2);
+            rb.Add(cabinet2);
+            cabinet1.Store(new Bag());
+            cabinet2.Store(new Bag());
+            rb.StoreBag(new Bag());
+            Assert.IsFalse(cabinet1.HasEmptyBox());
+        }
 
     }
 }
