@@ -119,5 +119,20 @@ namespace CabinetSystemTest
             rb.StoreBag(new Bag());
         }
 
+
+        [TestMethod]
+        public void test_robot_could_pick_bag_when_ticket_is_valid()
+        {
+            var rb = new Robot();
+            var cabinet = new Cabinet(2);
+            rb.Add(cabinet);
+            var bag = new Bag();
+            var ticket = rb.StoreBag(bag);
+
+            var pickedBag = rb.PickBag(ticket);
+
+            Assert.AreEqual(bag, pickedBag);
+        }
+
     }
 }

@@ -37,5 +37,20 @@ namespace CabinetSystem
 
             throw new NoAvailableBoxException();
         }
+
+        public Bag PickBag(Ticket ticket)
+        {
+            Bag bag = null;
+
+            foreach (var cabinet in _lsCabinet)
+            {
+                bag = cabinet.PickBag(ticket);
+
+                if (null != bag)
+                    break;
+            }
+
+            return bag;
+        }
     }
 }
