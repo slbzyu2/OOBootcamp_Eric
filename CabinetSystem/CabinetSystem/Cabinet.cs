@@ -46,15 +46,24 @@ namespace CabinetSystem
 
         public Bag PickBag(Ticket ticket, bool isFromRobot)
         {
-            return ticket.IsFromRobat == isFromRobot ? PickBag(ticket) : null;
+            return Pick(ticket, isFromRobot);
         }
 
         public Bag PickBag(Ticket ticket)
         {
+            return PickBag(ticket, false);
+        }
+
+        public Bag Pick(Ticket ticket, bool isFromRobot)
+        {
             if (ticket == null)
                 throw new NonTicketException("Invalid Ticket");
 
+           
             if (!_dictionary.ContainsKey(ticket))
+                return null;
+
+            if (ticket.IsFromRobat != isFromRobot)
                 return null;
 
             var bag = _dictionary[ticket];
