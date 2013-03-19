@@ -160,5 +160,17 @@ namespace CabinetSystemTest
 
             Assert.AreEqual(null, pickedBag);
         }
+
+        [TestMethod]
+        public void test_robot_could_not_pick_bag_when_ticket_has_be_returned_by_cabinet()
+        {
+            var rb = new Robot();
+            var cabinet = new Cabinet(2);
+            rb.Add(cabinet);
+
+            var pickedBag = rb.PickBag(cabinet.Store(new Bag()));
+
+            Assert.AreEqual(null, pickedBag);
+        }
     }
 }

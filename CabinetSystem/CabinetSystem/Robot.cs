@@ -31,7 +31,7 @@ namespace CabinetSystem
                 if (!cabinet.HasEmptyBox()) 
                     continue;
 
-                var ticket = cabinet.Store(bag);
+                var ticket = cabinet.Store(bag,true);
                 return ticket;
             }
 
@@ -44,7 +44,7 @@ namespace CabinetSystem
 
             foreach (var cabinet in _lsCabinet)
             {
-                bag = cabinet.PickBag(ticket);
+                bag = cabinet.PickBag(ticket,true);
 
                 if (null != bag)
                     break;

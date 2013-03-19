@@ -26,6 +26,13 @@ namespace CabinetSystem
             return _dictionary.Count < _capacity;
         }
 
+        public Ticket Store(Bag bag, bool isFromRobot)
+        {
+            var ticket = Store(bag);
+            ticket.IsFromRobat = isFromRobot;
+            return ticket;
+        }
+
         public Ticket Store(Bag bag)
         {
             if (_dictionary.Count >= _capacity)
@@ -35,6 +42,11 @@ namespace CabinetSystem
             _dictionary.Add(ticket, bag);
 
             return ticket;
+        }
+
+        public Bag PickBag(Ticket ticket, bool isFromRobot)
+        {
+            return ticket.IsFromRobat == isFromRobot ? PickBag(ticket) : null;
         }
 
         public Bag PickBag(Ticket ticket)
