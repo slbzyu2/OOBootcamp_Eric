@@ -46,16 +46,6 @@ namespace CabinetSystem
 
         public Bag PickBag(Ticket ticket, bool isFromRobot)
         {
-            return Pick(ticket, isFromRobot);
-        }
-
-        //public Bag PickBag(Ticket ticket)
-        //{
-        //    return PickBag(ticket, false);
-        //}
-
-        public Bag Pick(Ticket ticket, bool isFromRobot)
-        {
             if (ticket == null)
                 throw new NonTicketException("Invalid Ticket");
 
