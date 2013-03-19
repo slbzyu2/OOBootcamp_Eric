@@ -148,6 +148,17 @@ namespace CabinetSystemTest
         }
 
 
+        [TestMethod]
+        public void test_robot_could_not_pick_bag_when_ticket_is_already_used()
+        {
+            var rb = new Robot();
+            rb.Add(new Cabinet(2));
+            var ticket = rb.StoreBag(new Bag());
+            rb.PickBag(ticket);
 
+            var pickedBag = rb.PickBag(ticket);
+
+            Assert.AreEqual(null, pickedBag);
+        }
     }
 }
