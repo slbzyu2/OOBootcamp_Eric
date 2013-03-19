@@ -49,10 +49,10 @@ namespace CabinetSystem
             return Pick(ticket, isFromRobot);
         }
 
-        public Bag PickBag(Ticket ticket)
-        {
-            return PickBag(ticket, false);
-        }
+        //public Bag PickBag(Ticket ticket)
+        //{
+        //    return PickBag(ticket, false);
+        //}
 
         public Bag Pick(Ticket ticket, bool isFromRobot)
         {

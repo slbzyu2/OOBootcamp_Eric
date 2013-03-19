@@ -81,7 +81,7 @@ namespace CabinetSystemTest
             var cabinet = new Cabinet();
             Bag bag = new Bag();
             Ticket ticket = cabinet.Store(bag);
-            Assert.AreEqual(bag, cabinet.PickBag(ticket));
+            Assert.AreEqual(bag, cabinet.Pick(ticket,false));
         }
 
         [TestMethod]
@@ -92,8 +92,8 @@ namespace CabinetSystemTest
             Bag bag2 = new Bag();
             Ticket ticket1 = cabinet.Store(bag1);
             Ticket ticket2 = cabinet.Store(bag2);
-            Assert.AreEqual(bag1, cabinet.PickBag(ticket1));
-            Assert.AreEqual(bag2, cabinet.PickBag(ticket2));
+            Assert.AreEqual(bag1, cabinet.Pick(ticket1,false));
+            Assert.AreEqual(bag2, cabinet.Pick(ticket2,false));
         }
 
         [TestMethod]
@@ -101,9 +101,9 @@ namespace CabinetSystemTest
         {
             var cabinet = new Cabinet();
             Ticket ticket = cabinet.Store(new Bag());
-            cabinet.PickBag(ticket);
+            cabinet.Pick(ticket,false);
 
-            Assert.IsNull(cabinet.PickBag(ticket));
+            Assert.IsNull(cabinet.Pick(ticket,false));
         }
 
         [TestMethod]
@@ -111,7 +111,7 @@ namespace CabinetSystemTest
         {
             var cabinet = new Cabinet();
             cabinet.Store(new Bag());
-            var pickBag = cabinet.PickBag(new Ticket());
+            var pickBag = cabinet.Pick(new Ticket(),false);
 
             Assert.IsNull(pickBag);
         }
@@ -123,7 +123,7 @@ namespace CabinetSystemTest
         {
             var cabinet = new Cabinet();
             cabinet.Store(new Bag());
-            cabinet.PickBag(new object() as Ticket);
+            cabinet.Pick(new object() as Ticket,false);
         }
 
         [TestMethod]

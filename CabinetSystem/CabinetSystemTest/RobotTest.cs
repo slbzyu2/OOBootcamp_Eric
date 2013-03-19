@@ -181,7 +181,7 @@ namespace CabinetSystemTest
             rb.Add(cabinet);
 
             var ticket = rb.StoreBag(new Bag());
-            var pickedBag = cabinet.PickBag(ticket);
+            var pickedBag = cabinet.PickBag(ticket,false);
 
             Assert.AreEqual(null, pickedBag);
         }
