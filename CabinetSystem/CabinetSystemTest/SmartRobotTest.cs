@@ -61,14 +61,6 @@ namespace CabinetSystemTest
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
-        {
-            //
-            // TODO: Add test logic	here
-            //
-        }
-
-        [TestMethod]
         public void test_smartrobot_should_has_empty_box()
         {
             var srb = new SmartRobot();
@@ -87,7 +79,6 @@ namespace CabinetSystemTest
             Assert.IsNotNull(ticket);
         }
 
-
         [TestMethod]
         public void test_smartrobot_get_empty_box_count()
         {
@@ -96,6 +87,19 @@ namespace CabinetSystemTest
             srb.Add(cabinet);
 
             Assert.AreEqual(1, cabinet.GetEmptyBoxCount());
+        }
+
+
+        [TestMethod]
+        public void test_smartrobot_can_store_bag_by_order()
+        {
+            var srb = new SmartRobot();
+            var cabinet = new Cabinet(3);
+            srb.Add(cabinet);
+            srb.Add(new Cabinet(1));
+            srb.Store(new Bag());
+
+            Assert.AreEqual(2, cabinet.GetEmptyBoxCount());
         }
     }
 }

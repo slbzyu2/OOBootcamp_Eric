@@ -1,23 +1,34 @@
+using System.Collections.Generic;
 using CabinetSystemTest;
 
 namespace CabinetSystem
 {
-    public class SmartRobot
-
+    public class SmartRobot : Robot
     {
-        public bool HasEmptyBox()
+        public override Ticket Store(Bag bag)
         {
-            return true;
+            var cabinet = GetCabinetWithMaxEmptybox();
+            if (cabinet == null)
+                throw new NoAvailableBoxException();
+
+            var ticket = cabinet.Store(bag, true);
+            return ticket;
         }
 
-        public void Add(Cabinet cabinet)
+        private Cabinet GetCabinetWithMaxEmptybox()
         {
-            return;
-        }
+            var boxcount = 0;
+            var iCabinetWithMaxEmptybox = -1;
+            for (var iCabinet = 0; iCabinet < _lsCabinet.Count; iCabinet++)
+            {
+                if (boxcount < _lsCabinet[iCabinet].GetEmptyBoxCount())
+                {
+                    boxcount = _lsCabinet[iCabinet].GetEmptyBoxCount();
+                    iCabinetWithMaxEmptybox = iCabinet;
+                }
+            }
 
-        public Ticket Store(Bag bag)
-        {
-            return new Ticket();
+            return iCabinetWithMaxEmptybox == -1 ? null : _lsCabinet[iCabinetWithMaxEmptybox];
         }
     }
 }

@@ -7,7 +7,7 @@ namespace CabinetSystem
 {
     public class Robot
     {
-        private readonly List<Cabinet> _lsCabinet;
+        protected readonly List<Cabinet> _lsCabinet;
         public Robot()
         {
             _lsCabinet = new List<Cabinet>();
@@ -24,7 +24,7 @@ namespace CabinetSystem
             return _lsCabinet.Any(cabin => cabin.HasEmptyBox());
         }
 
-        public Ticket StoreBag(Bag bag)
+        public virtual Ticket Store(Bag bag)
         {
             foreach (var cabinet in _lsCabinet)
             {

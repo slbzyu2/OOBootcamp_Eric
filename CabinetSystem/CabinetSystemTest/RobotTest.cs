@@ -79,7 +79,7 @@ namespace CabinetSystemTest
 
             Assert.IsTrue(rb.HasEmptyBox());
 
-            var t1 = rb.StoreBag(new Bag());
+            var t1 = rb.Store(new Bag());
             Assert.IsNotNull(t1);
         }
 
@@ -90,8 +90,8 @@ namespace CabinetSystemTest
             var cabinet1 = new Cabinet(2);
             rb.Add(cabinet1);
             rb.Add(new Cabinet(2));
-            rb.StoreBag(new Bag());
-            rb.StoreBag(new Bag());
+            rb.Store(new Bag());
+            rb.Store(new Bag());
             Assert.IsFalse(cabinet1.HasEmptyBox());
         }
 
@@ -105,7 +105,7 @@ namespace CabinetSystemTest
             rb.Add(cabinet2);
             cabinet1.Store(new Bag());
             cabinet2.Store(new Bag());
-            rb.StoreBag(new Bag());
+            rb.Store(new Bag());
             Assert.IsFalse(cabinet1.HasEmptyBox());
         }
 
@@ -115,8 +115,8 @@ namespace CabinetSystemTest
         {
             var rb = new Robot();
             rb.Add(new Cabinet(1));
-            rb.StoreBag(new Bag());
-            rb.StoreBag(new Bag());
+            rb.Store(new Bag());
+            rb.Store(new Bag());
         }
 
 
@@ -127,7 +127,7 @@ namespace CabinetSystemTest
             var cabinet = new Cabinet(2);
             rb.Add(cabinet);
             var bag = new Bag();
-            var ticket = rb.StoreBag(bag);
+            var ticket = rb.Store(bag);
 
             var pickedBag = rb.PickBag(ticket);
 
@@ -140,7 +140,7 @@ namespace CabinetSystemTest
         {
             var rb = new Robot();
             rb.Add(new Cabinet(2));
-            rb.StoreBag(new Bag());
+            rb.Store(new Bag());
 
             var pickedBag = rb.PickBag(new Ticket());
 
@@ -153,7 +153,7 @@ namespace CabinetSystemTest
         {
             var rb = new Robot();
             rb.Add(new Cabinet(2));
-            var ticket = rb.StoreBag(new Bag());
+            var ticket = rb.Store(new Bag());
             rb.PickBag(ticket);
 
             var pickedBag = rb.PickBag(ticket);
@@ -180,7 +180,7 @@ namespace CabinetSystemTest
             var cabinet = new Cabinet(2);
             rb.Add(cabinet);
 
-            var ticket = rb.StoreBag(new Bag());
+            var ticket = rb.Store(new Bag());
             var pickedBag = cabinet.PickBag(ticket,false);
 
             Assert.AreEqual(null, pickedBag);
