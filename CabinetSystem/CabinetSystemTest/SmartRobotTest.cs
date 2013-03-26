@@ -86,5 +86,16 @@ namespace CabinetSystemTest
             var ticket = srb.Store(new Bag());
             Assert.IsNotNull(ticket);
         }
+
+
+        [TestMethod]
+        public void test_smartrobot_get_empty_box_count()
+        {
+            var srb = new SmartRobot();
+            var cabinet = new Cabinet(1);
+            srb.Add(cabinet);
+
+            Assert.AreEqual(1, cabinet.GetEmptyBoxCount());
+        }
     }
 }

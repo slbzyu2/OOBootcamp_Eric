@@ -60,5 +60,10 @@ namespace CabinetSystem
             _dictionary.Remove(ticket);
             return bag;
         }
+
+        public int GetEmptyBoxCount()
+        {
+            return _capacity - _dictionary.Count;
+        }
     }
 }
