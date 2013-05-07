@@ -9,6 +9,12 @@ namespace CabinetSystem
         private const int DEFAULT_CAPACITY = 5;
         private readonly int _capacity;
         private readonly IDictionary<Ticket, Bag> _dictionary;
+        
+        public int Capacity
+        {
+            get { return _capacity; }
+        }
+
         public Cabinet()
         {
             _dictionary = new Dictionary<Ticket, Bag>(DEFAULT_CAPACITY);

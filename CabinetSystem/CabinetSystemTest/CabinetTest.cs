@@ -136,5 +136,14 @@ namespace CabinetSystemTest
             cabinet.Store(new Bag());
             cabinet.Store(new Bag());
         }
+
+        [TestMethod]
+        public void test_can_get_capacity()
+        {
+            const int capacity = 2;
+            var cabinet = new Cabinet(capacity);
+
+            Assert.AreEqual(capacity, cabinet.Capacity);
+        }
     }
 }
