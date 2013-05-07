@@ -17,5 +17,15 @@ namespace CabinetSystemTest
 
             Assert.IsTrue(superRobot.HasEmptyBox());
         }
+
+        [TestMethod]
+        public void test_superrobot_can_store_bag()
+        {
+            var superRobot = new SuperRobot();
+            superRobot.Add(new Cabinet());
+
+            var ticket = superRobot.Store(new Bag());
+            Assert.IsNotNull(ticket);
+        }
     }
 }
