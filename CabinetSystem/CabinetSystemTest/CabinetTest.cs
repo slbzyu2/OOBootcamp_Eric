@@ -145,5 +145,16 @@ namespace CabinetSystemTest
 
             Assert.AreEqual(capacity, cabinet.Capacity);
         }
+
+        [TestMethod]
+        public void test_cabinetutil_can_return_cabinet_empty_rate()
+        {
+            const int capacity = 10;
+            var cabinet = new Cabinet(capacity);
+            cabinet.Store(new Bag());
+            cabinet.Store(new Bag());
+
+            Assert.AreEqual((10.0-2.0) / 10, CabinetUtil.EmptyRate(cabinet));
+        }
     }
 }
