@@ -7,7 +7,7 @@ namespace CabinetSystem
     {
         public virtual Ticket Store(Bag bag)
         {
-            var cabinet = _lsCabinet.OrderByDescending(x => CabinetUtil.EmptyRate(x)).FirstOrDefault();
+            var cabinet = _lsCabinet.OrderByDescending(x=> x.EmptyRate()).FirstOrDefault();
             if (cabinet != null && cabinet.HasEmptyBox())
                 return cabinet.Store(bag);
 
