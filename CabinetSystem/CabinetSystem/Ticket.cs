@@ -1,4 +1,4 @@
-namespace CabinetSystemTest
+namespace CabinetSystem
 {
     public class Ticket
     {

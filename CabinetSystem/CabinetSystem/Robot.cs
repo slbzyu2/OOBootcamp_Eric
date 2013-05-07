@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using CabinetSystem;
-using CabinetSystemTest;
-
 namespace CabinetSystem
 {
     public class Robot

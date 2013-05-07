@@ -27,5 +27,27 @@ namespace CabinetSystemTest
             var ticket = superRobot.Store(new Bag());
             Assert.IsNotNull(ticket);
         }
+
+        [TestMethod]
+        public void test_superrobot_can_store_bag_by_emptyboxrate()
+        {
+            var superRobot = new SuperRobot();
+            var cabinet1 = new Cabinet(10);
+            var cabinet2 = new Cabinet(8);
+
+            cabinet1.Store(new Bag());
+            cabinet1.Store(new Bag());
+            cabinet1.Store(new Bag());
+
+            cabinet2.Store(new Bag());
+            cabinet2.Store(new Bag());
+
+            superRobot.Add(cabinet1);
+            superRobot.Add(cabinet2);
+
+            superRobot.Store(new Bag());
+
+            Assert.AreEqual(5, cabinet2.GetEmptyBoxCount());
+        }
     }
 }
