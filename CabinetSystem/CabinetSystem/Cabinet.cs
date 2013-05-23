@@ -2,15 +2,20 @@ using System.Collections.Generic;
 
 namespace CabinetSystem
 {
-    public class Cabinet
+    public class Cabinet : IStorable
     {
         private const int DEFAULT_CAPACITY = 5;
         private readonly int _capacity;
         private readonly IDictionary<Ticket, Bag> _dictionary;
         
-        public int Capacity
+        //public int Capacity
+        //{
+        //    get { return _capacity; }
+        //}
+
+        public int GetCapacity()
         {
-            get { return _capacity; }
+            return _capacity;
         }
 
         public Cabinet()

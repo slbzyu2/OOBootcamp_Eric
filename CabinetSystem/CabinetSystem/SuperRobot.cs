@@ -9,7 +9,7 @@ namespace CabinetSystem
         {
             var cabinet = _lsCabinet.OrderByDescending(x=> x.EmptyRate()).FirstOrDefault();
             if (cabinet != null && cabinet.HasEmptyBox())
-                return cabinet.Store(bag);
+                return cabinet.Store(bag,true);
 
             throw new NoAvailableBoxException();
         }

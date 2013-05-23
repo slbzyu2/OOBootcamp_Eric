@@ -3,18 +3,22 @@ using System.Linq;
 using CabinetSystem;
 namespace CabinetSystem
 {
-    public class Robot
+    public class Robot : IStorable
     {
-        protected readonly List<Cabinet> _lsCabinet;
+        protected readonly List<IStorable> _lsCabinet;
         public Robot()
         {
-            _lsCabinet = new List<Cabinet>();
+            _lsCabinet = new List<IStorable>();
+        }
+        
+        public void Add(IStorable storable)
+        {
+            _lsCabinet.Add(storable);
         }
 
-        
-        public void Add(Cabinet cabinet)
+        public int GetCapacity()
         {
-            _lsCabinet.Add(cabinet);
+            return _lsCabinet.Sum(cabinet => cabinet.GetCapacity());
         }
 
         public bool HasEmptyBox()
@@ -22,18 +26,33 @@ namespace CabinetSystem
             return _lsCabinet.Any(cabin => cabin.HasEmptyBox());
         }
 
+        public Ticket Store(Bag bag, bool isFromRobot)
+        {
+            return this.Store(bag);
+        }
+
         public virtual Ticket Store(Bag bag)
         {
             foreach (var cabinet in _lsCabinet)
             {
-                if (!cabinet.HasEmptyBox()) 
+                if (!cabinet.HasEmptyBox())
                     continue;
 
-                var ticket = cabinet.Store(bag,true);
+                var ticket = cabinet.Store(bag, true);
                 return ticket;
             }
 
             throw new NoAvailableBoxException();
+        }
+
+        public Bag PickBag(Ticket ticket, bool isFromRobot)
+        {
+            return PickBag(ticket);
+        }
+
+        public int GetEmptyBoxCount()
+        {
+            return _lsCabinet.Sum(cabinet => cabinet.GetEmptyBoxCount());
         }
 
         public Bag PickBag(Ticket ticket)

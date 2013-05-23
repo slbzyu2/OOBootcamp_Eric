@@ -4,9 +4,9 @@ namespace CabinetSystem
 {
     public static class CabinetUtil
     {
-        public static double EmptyRate(this Cabinet cabinet)
+        public static double EmptyRate(this IStorable storeable)
         {
-            return (double)cabinet.GetEmptyBoxCount()/cabinet.Capacity;
+            return (double)storeable.GetEmptyBoxCount() / storeable.GetCapacity();
         }
     }
 }

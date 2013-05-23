@@ -143,7 +143,7 @@ namespace CabinetSystemTest
             const int capacity = 2;
             var cabinet = new Cabinet(capacity);
 
-            Assert.AreEqual(capacity, cabinet.Capacity);
+            Assert.AreEqual(capacity, cabinet.GetCapacity());
         }
 
         [TestMethod]

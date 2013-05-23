@@ -48,6 +48,7 @@
     <Compile Include="Bag.cs" />
     <Compile Include="Cabinet.cs" />
     <Compile Include="CabinetUtil.cs" />
+    <Compile Include="IStorable.cs" />
     <Compile Include="NoAvailableBoxException.cs" />
     <Compile Include="NonTicketException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

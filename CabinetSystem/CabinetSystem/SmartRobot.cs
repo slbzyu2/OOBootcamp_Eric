@@ -12,7 +12,7 @@ namespace CabinetSystem
             return ticket;
         }
 
-        private Cabinet GetCabinetWithMaxEmptybox()
+        private IStorable GetCabinetWithMaxEmptybox()
         {
             var boxcount = 0;
             var iCabinetWithMaxEmptybox = -1;
