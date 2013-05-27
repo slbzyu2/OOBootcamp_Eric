@@ -10,6 +10,7 @@ namespace CabinetSystem
         {
             _lsCabinet = new List<IStorable>();
         }
+
         
         public void Add(IStorable storable)
         {

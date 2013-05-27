@@ -8,11 +8,6 @@ namespace CabinetSystem
         private readonly int _capacity;
         private readonly IDictionary<Ticket, Bag> _dictionary;
         
-        //public int Capacity
-        //{
-        //    get { return _capacity; }
-        //}
-
         public int GetCapacity()
         {
             return _capacity;
